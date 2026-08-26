@@ -94,6 +94,32 @@ bool Fixed::operator!=(const Fixed &obj) const
 	return (this->getRawBits() != obj.getRawBits());
 }
 
+Fixed Fixed::operator+(const Fixed &obj) const
+{
+	Fixed result(this->getRawBits() + obj.getRawBits());
+	return (result);
+}
+
+Fixed Fixed::operator-(const Fixed &obj) const
+{
+	Fixed result(this->getRawBits() - obj.getRawBits());
+	return (result);
+}
+
+Fixed Fixed::operator/(const Fixed &obj) const
+{
+	Fixed result;
+	result.setRawBits(int((long(this->getRawBits()) << Fixed::m_fractionalBits) / long(obj.getRawBits())));
+	return (result);
+}
+
+Fixed Fixed::operator*(const Fixed &obj) const
+{
+	Fixed result;
+	result.setRawBits(int((long(this->getRawBits()) * long(obj.getRawBits())) >> Fixed::m_fractionalBits));
+	return (result);
+}
+
 Fixed &Fixed::min(Fixed &n1, Fixed &n2)
 {
 	return (n1 < n2 ? n1 : n2);
