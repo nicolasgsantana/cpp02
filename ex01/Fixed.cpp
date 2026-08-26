@@ -7,12 +7,14 @@ Fixed::Fixed(void) : m_value(0)
 
 Fixed::Fixed(const int value)
 {
-
+	std::cout << "Int constructor called" << std::endl;
+	this->m_value = (value  * (1 << this->m_fractionalBits));
 }
 
 Fixed::Fixed(const float value)
 {
-
+	std::cout << "Float constructor called" << std::endl;
+	this->m_value = int(value * (float(1 << this->m_fractionalBits)) + (value >= 0 ? 0.5 : -0.5));
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -31,7 +33,8 @@ Fixed &Fixed::operator=(const Fixed &obj)
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
-
+	os << fixed.toFloat();
+	return (os);
 }
 
 Fixed::~Fixed(void)
@@ -53,12 +56,10 @@ void Fixed::setRawBits(const int raw)
 
 float Fixed::toFloat(void) const
 {
-	return (0.0f);
+	return (float(this->m_value) / float(1 << this->m_fractionalBits));
 }
 
 int Fixed::toInt(void) const
 {
-	return (0);
+	return (this->m_value / (1 << this->m_fractionalBits));
 }
-
-
