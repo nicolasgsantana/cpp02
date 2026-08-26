@@ -94,13 +94,15 @@ bool Fixed::operator!=(const Fixed &obj) const
 
 Fixed Fixed::operator+(const Fixed &obj) const
 {
-	Fixed result(this->getRawBits() + obj.getRawBits());
+	Fixed result;
+	result.setRawBits(this->getRawBits() + obj.getRawBits());
 	return (result);
 }
 
 Fixed Fixed::operator-(const Fixed &obj) const
 {
-	Fixed result(this->getRawBits() - obj.getRawBits());
+	Fixed result;
+	result.setRawBits(this->getRawBits() - obj.getRawBits());
 	return (result);
 }
 
@@ -140,7 +142,7 @@ Fixed &Fixed::operator++(void)
 Fixed Fixed::operator++(int)
 {
 	Fixed temp(*this);
-	this->m_value -= 1;
+	this->m_value += 1;
 	return (temp);
 }
 
