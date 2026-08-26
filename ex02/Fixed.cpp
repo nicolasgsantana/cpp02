@@ -64,6 +64,36 @@ int Fixed::toInt(void) const
 	return (this->m_value / (1 << this->m_fractionalBits));
 }
 
+bool Fixed::operator>(const Fixed &obj) const
+{
+	return (this->getRawBits() > obj.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed &obj) const
+{
+	return (this->getRawBits() < obj.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed &obj) const
+{
+	return (this->getRawBits() >= obj.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed &obj) const
+{
+	return (this->getRawBits() <= obj.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed &obj) const
+{
+	return (this->getRawBits() == obj.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed &obj) const
+{
+	return (this->getRawBits() != obj.getRawBits());
+}
+
 Fixed &Fixed::min(Fixed &n1, Fixed &n2)
 {
 	return (n1 < n2 ? n1 : n2);
