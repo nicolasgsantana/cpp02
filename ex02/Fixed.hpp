@@ -23,6 +23,23 @@ public:
 	float	toFloat(void) const;
 	int		toInt(void) const;
 
+	bool operator> (Fixed &obj);
+	bool operator< (Fixed &obj);
+	bool operator>= (Fixed &obj);
+	bool operator<= (Fixed &obj);
+	bool operator== (Fixed &obj);
+	bool operator!= (Fixed &obj);
+
+	Fixed operator+ (Fixed &obj);
+	Fixed operator- (Fixed &obj);
+	Fixed operator/ (Fixed &obj);
+	Fixed operator* (Fixed &obj);
+
+	Fixed &operator-- (void);
+	Fixed operator-- (int);
+	Fixed &operator++ (void);
+	Fixed operator++ (int);
+
 	static Fixed &min(Fixed &n1, Fixed &n2);
 	static Fixed &min(const Fixed &n1, const Fixed &n2);
 	static Fixed &max(Fixed &n1, Fixed &n2);
