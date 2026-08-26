@@ -120,6 +120,32 @@ Fixed Fixed::operator*(const Fixed &obj) const
 	return (result);
 }
 
+Fixed &Fixed::operator--(void)
+{
+	this->m_value -= 1;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	this->m_value -= 1;
+	return (temp);
+}
+
+Fixed &Fixed::operator++(void)
+{
+	this->m_value += 1;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	this->m_value -= 1;
+	return (temp);
+}
+
 Fixed &Fixed::min(Fixed &n1, Fixed &n2)
 {
 	return (n1 < n2 ? n1 : n2);
